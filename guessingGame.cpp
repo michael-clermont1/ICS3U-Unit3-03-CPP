@@ -2,26 +2,29 @@
 //
 // Created by: Michael Clermont
 // Created on: Feb 2022
-// This program calculates the price of a pizza
-//    with diameter inputted by the user and HST
+// This program is a guessing game
 
 #include <iostream>
+#include <random>
 
 int main() {
-    // this function calculates the area and perimeter inputted by user
+    // this function is a guessing game
     int numberFromUser;
-    const int NUMBER = 4;
+    int randomNumber;
 
     // input
     std::cout << "Enter a number between 0-9: ";
     std::cin >> numberFromUser;
+    std::random_device rseed;
+    std::mt19937 rgen(rseed());
+    std::uniform_int_distribution<int> idist(0, 9);
+    randomNumber = idist(rgen);
     std::cout << "" << std::endl;
 
     // process & output
-    if (numberFromUser == NUMBER) {
+    if (numberFromUser == randomNumber) {
         std::cout << "You guessed it correctly!";
-    }
-    if (numberFromUser != NUMBER) {
+    } else {
         std::cout << "You guessed it incorrectly!";
     }
     std::cout << "\nDone." << std::endl;
